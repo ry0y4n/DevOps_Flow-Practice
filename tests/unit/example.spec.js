@@ -4,8 +4,8 @@ import App from "@/components/MomosukeWorld.vue";
 test("test App Component",function(){
   const wrapper = mount(App,{
     propsData:{
-      msg: "World"
+      msg: "MOMOSUKE"
     }
   });
-  expect(wrapper.text()).toBe('Hello World')
+  expect(wrapper.text()).toBe('Hello MOMOSUKE')
 })
