@@ -1,0 +1,24 @@
+name: OWASP ZAP Actions
+on: [push]
+jobs:
+  website-scan:
+    runs-on: ubuntu-latest
+    name: DAST (Dynamic Application Security Testing)
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          ref: master
+      - name: Action Full Scan
+        uses: zaproxy/action-full-scan@v0.3.0
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          docker_name: owasp/zap2docker-stable
+          target: ${{ secrets.WEBSITE_URL }}
+          cmd_options: >
+            -a
+            -j
+            -z "
+            -config alert.maxInstances=0
+            -config view.locale=ja_JP
+            "
